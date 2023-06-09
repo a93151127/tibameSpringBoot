@@ -1,0 +1,30 @@
+<html>
+    <!DOCTYPE html>
+    <head>
+        <meta charset="UTF-8"/>
+    </head>
+    <body>
+        <fieldset>
+            <legend>客戶資料維護</legend>
+            <form method="post" action="save">
+                <div>客戶編號</div>
+                <input type="text" name="customerId"/>
+                <div>公司行號</div>
+                <input type="text" name="companyName"/>
+                <div>聯絡地址</div>
+                <input type="text" name="address"/>
+                <div>連絡電話</div>
+                <input type="text" name="phone"/>
+                <div>國家別</div>
+                <input type="text" name="country"/>
+                <div>
+                    <input type="submit" value="新增"/>
+                    <input type="reset" value="取消"/>
+                </div>
+            </form>
+            <!--th: thymeleaf指令 text-innerText-->
+            <div th:text="${msg}"></div>
+           
+        </fieldset>
+    </body>
+</html>

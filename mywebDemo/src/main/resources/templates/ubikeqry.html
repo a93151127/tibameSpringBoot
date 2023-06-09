@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script th:src="@{/js/vue.min.js}"></script>
+    <script th:src="@{/js/axios.min.js}"></script>
+    <title>台北市Ubike 即時資訊</title>
+</head>
+<body>
+    <fieldset id="app">
+        <legend>Ubike即時資訊</legend>
+        <div>區域</div>
+        <input type="text" v-model="area"/>
+        <button v-on:click="qryHandler">查詢</button>
+        <div>輸入查詢區域:{{area}}</div>
+        <div>查詢區域:{{area}} 記錄數:{{result.length}}</div>
+        <!--查詢結果呈現區域-->
+        <fieldset v-show="isShow">
+            <legend>即時資訊</legend>
+            
+            <table>
+                <thead>
+                    <tr>
+                        <td>場站</td>
+                        <td>總停車格</td>
+                        <td>目前可用車輛</td>
+                        <td>目前可停靠數</td>
+                        <td>更新時間點</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-for="item in result">
+                        <td>{{item.sna}}</td>
+                        <td>{{item.tot}}</td>
+                        <td>{{item.sbi}}</td>
+                        <td>{{item.bemp}}</td>
+                        <td>{{item.updateTime}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </fieldset>
+    </fieldset>
+    <!--建構Vue物件-->
+    <script>
+        //建構Vue Instance
+        var app=new Vue(
+            //使用 JS物件設定初始化
+            {
+                //資料模組
+                data:{
+                    area:'',
+                    result:[],
+                    isShow:false
+                },
+                //共用方法或者事件程序
+                methods:{
+                    qryHandler:function(){
+                       
+                        //採用axios框架進行ajax非同步處理
+                        let urlString='../api/ubike/qry/'+this.area.trim()+'/rawdata';
+                        console.log(urlString);
+                        //axios進行非同步呼喚後端服務 採用Http Request Method:GET
+                        axios.get(urlString)
+                        //then status code 2xx
+                        .then(res => {
+                            this.result=res.data;
+                            console.log(this.result);
+                            //判斷是否資料
+                            if(this.result.length>0){
+                                this.isShow=true;
+                            }else{
+                                this.isShow=false;
+                            }
+                        })
+                        .catch(err => {
+                            console.error(err); 
+                        })
+                    }
+                }
+            }
+        );
+        //掛載
+        app.$mount('#app');
+    </script>
+</body>
+</html>

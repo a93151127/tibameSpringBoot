@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>客戶資料查詢-依照城市</title>
+</head>
+<body>
+    <fieldset>
+        <div>城市</div>
+       <select>
+            <option th:each="city:${cities}" th:value="${city}" th:text="${city}"></option>
+       </select>
+       <button>查詢</button>
+
+    </fieldset>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>維護狀態</title>
+</head>
+<body>
+    <div style="font-size:larger;color:blue;" th:text="${message}"></div>
+    <div th:if="${status}">
+        <table style="border:solid;">
+            
+            <tr>
+                <td>客戶編號</td>
+                <td th:text="${customer.customerId}"></td>
+             </tr>
+             <tr>
+                <td>公司行號</td>
+                <td th:text="${customer.companyName}"></td>
+             </tr>
+             <tr>
+                <td>聯絡地址</td>
+                <td th:text="${customer.address}"></td>
+             </tr>
+             <tr>
+                <td>連絡電話</td>
+                <td th:text="${customer.phone}"></td>
+             </tr>
+             <tr>
+                <td>國家別</td>
+                <td th:text="${customer.country}"></td>
+             </tr>
+        </table>
+    </div>
+</body>
+</html>

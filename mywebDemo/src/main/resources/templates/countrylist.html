@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>客戶查詢-By Country</title>
+</head>
+<body>
+    <fieldset>
+        <legend>客戶查詢</legend>
+        <select>
+            <option th:each="item,status: ${country}" th:text="${item}" 
+            th:value="${status}"></option>
+        </select>
+        <button>查詢</button>
+    </fieldset>
+</body>
+</html>

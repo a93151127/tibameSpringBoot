@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>刪除客戶作業</title>
+</head>
+<body>
+    <fieldset>
+        <legend>客戶刪除-By國家別</legend>
+        <form method="post">
+            <!--隱藏的一個被加密的Token-->
+            <input type="hidden" name="cred" th:value="${token}"/>
+            <div>國家別</div>
+            <input type="text" name="country"/>
+            <input type="submit" value="刪除"/>
+        </form>
+        <div th:text="${message}"></div>
+    </fieldset>
+</body>
+</html>

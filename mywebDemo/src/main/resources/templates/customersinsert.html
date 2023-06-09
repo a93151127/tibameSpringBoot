@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>客戶資料新增</title>
+</head>
+<body>
+    <fieldset>
+        <legend>客戶資料新增作業</legend>
+        <form th:action="@{/customers/insert}" method="POST">
+            <div>客戶編號</div>
+            <input type="text" th:name="customerId" th:value="${customer.customerId}"/>
+            <div>公司行號</div>
+            <input type="text" th:name="companyName" th:value="${customer.companyName}"/>
+            <div>聯絡地址</div>
+            <input type="text" th:name="address" th:value="${customer.address}"/>
+            <div>聯絡電話</div>
+            <input type="text" th:name="phone" th:value="${customer.phone}"/>
+            <div>國家別</div>
+            <input type="text" th:name="country" th:value="${customer.country}"/>
+            <br/>
+            <input type="submit" value="新增"/>
+           
+           
+        </form>
+        <div>
+            <h3 th:text="${message}"></h3>
+        </div>
+    </fieldset>
+</body>
+</html>

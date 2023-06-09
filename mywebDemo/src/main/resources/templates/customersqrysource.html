@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script th:src="@{/js/vue.min.js}"></script>
+    <title>客戶資料查詢</title>
+    
+</head>
+<body>
+    <fieldset id="panel">
+        <legend>客戶查詢</legend>
+        <form method="post">
+            <div>
+                <input type="text" name="country" id="country"/>
+                <input type="submit" value="查詢"/>
+            </div>
+        </form>
+        <button onclick="showKey();">JS測試</button>
+        <br/>
+        <button onclick="showData()">JS物件模組應用</button>
+        <div>{{100/5}}</div>
+
+    </fieldset>  
+    <!--建構Vue Instance-->  
+    <script>
+            //建構個體物件
+            var app=new Vue(
+                {
+                    //Vue Data Model
+                    data:{
+                        country:country, //表單輸入國家別同步資料模組
+                        message:'', //一般訊息模組
+                        data:[], //JS陣列 參照後端Server查詢相對國家別產生前端JS Array
+                        curCustomer:{}, //JS 物件(前端選取的相對記錄)
+                        currentRow:-1, //選取相對紀錄指標
+                        isShow:false, //對話盒呈現控制碼
+                        editShow:false,
+                        delShow:false,
+                        updateAPI:'', //遠端更新與刪除服務位址 
+                        deleteAPI:'',
+                        alertMessage:{text:'',image:''}, //資料處理狀態
+                        isMessage:false,
+                        isWait:true
+                    }
+                 }
+            );
+            //掛載
+            app.$mount('#panel');
+    </script>
+    <!--JS物件模組應用-->
+    <script>
+        //JS物件
+         //產生一個員工物件
+         var employees={
+            empid:1,
+            empName:'張三豐',
+            address:'台北市富新南路',
+            phone:'02-12345678',
+            country:countryValue, //使用Global變數內容
+            information:function(){
+                alert('姓名:'+this.empName+' 地址:'+this.address);
+            }
+        }
+        //JS陣列
+        var names=[
+            {
+                id:1,
+                name:'張無忌'
+            },
+            {
+                id:2,
+                name:'張三封'
+            },
+            {
+                id:3,
+                name:'張翠珊'
+            }
+        ]
+            //JSON Array
+            var jsonNames=[
+            {
+                "id":1,
+                "name":'張無忌'
+            },
+            {
+                "id":2,
+                "name":'張三封'
+            },
+            {
+                "id":3,
+                "name":'張翠珊'
+            }
+        ]
+    
+        //Global變數定義
+        var countryValue='USA';
+        //參照出文字輸入方塊
+        var txtCountry=document.getElementById('country');
+       
+        //定義共用函數
+        function showKey(){
+            //區域變數定義
+            let value=txtCountry.value;
+            //呈現對話盒
+            //alert(value);
+            //呼叫員工個體物件方法
+            employees.information();
+        }
+        //JS資料模組應用
+        function showData(){
+            console.log(employees);
+            console.log(names);
+            console.log(jsonNames);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>客戶資料</title>
+</head>
+<body>
+    <div>客戶編號</div>
+    <input type="text" readonly th:value="${customers.customerId}"/>
+    <div>公司行號</div>
+    <input type="text" readonly th:value="${customers.companyName}"/>
+    <div>聯絡地址</div>
+    <input type="text" readonly th:value="${customers.address}"/>
+    <div>連絡電話</div>
+    <input type="text" readonly th:value="${customers.phone}"/>
+    <div>國家別</div>
+    <input type="text" readonly th:value="${customers.country}"/>
+</body>
+</html>
