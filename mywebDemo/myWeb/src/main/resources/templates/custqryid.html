@@ -19,5 +19,18 @@
             <div>您查詢的客戶編號 :{{customerid}}</div>
         </form>
     </fieldset>
+    <!--建構Vue物件掛載DOM-->
+    <script>
+        var app=new Vue(
+            {
+                //資料模組
+                data:{
+                    customerid:'99999'
+                }
+            }
+        );
+        //掛載
+        app.$mount('#app');
+    </script>
 </body>
 </html>
